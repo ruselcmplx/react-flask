@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link href="{{ url_for("static", filename="vendors/bootstrap/dist/css/bootstrap.min.css") }}" rel="stylesheet">
+      <link href="{{ url_for("static", filename="style.css") }}" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container-fluid">
+	      <div class="row">
+		      <div class="col-md-12">
+			      <div class="btn-group btn-group-sm">
+                  <button class="btn btn-default" type="button">
+                     <em class="glyphicon glyphicon-align-left"></em> Left
+                  </button>
+                  <button class="btn btn-default" type="button">
+                     <em class="glyphicon glyphicon-align-center"></em> Center
+                  </button>
+                  <button class="btn btn-default" type="button">
+                     <em class="glyphicon glyphicon-align-right"></em> Right
+                  </button>
+                  <button class="btn btn-default" type="button">
+                     <em class="glyphicon glyphicon-align-justify"></em> Justify
+                  </button>
+               </div>
+               <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-circle" /> <span class="label label-primary">Label</span>
+                  <button type="button" class="btn btn-default">
+                     Default
+                  </button>
+                  <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-circle user-avatar" />
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-2">
+               <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-circle" /> <span class="label label-default">Label</span>
+               <ul class="breadcrumb">
+                  <li>
+                     <a href="#">Home</a> <span class="divider">/</span>
+                  </li>
+                  <li>
+                     <a href="#">Library</a> <span class="divider">/</span>
+                  </li>
+                  <li class="active">
+                     Data
+                  </li>
+               </ul>
+            </div>
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-2">
+            </div>
+         </div>
+      </div>
+
+
+      {%- if config.get("ASSETS_DEBUG") -%}
+         <script src="{{ url_for("static", filename="vendors/requirejs/require.js") }}"></script>
+         <script src="{{ url_for("static", filename="config.js") }}"></script>
+      {%- else -%}
+         <script src="{{ url_for("static", filename="vendors/almond/almond.js") }}"></script>
+         <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+      {%- endif -%}
+      {%- assets "app.js" -%}
+         <script src="{{ ASSET_URL }}"></script>
+      {%- endassets -%}
+   </body>
+</html>

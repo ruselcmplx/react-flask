@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Demo</title>
+</head>
+<body>
+  <h1>Demo</h1>
+  <div>Your ip-address is {{ ip }}</div>
+  <div>
+  {% for el in a %}
+   {{ el }}
+  {% endfor %}
+  </div>
+  <div id="react_container"></div>
+
+{%- if config.get("ASSETS_DEBUG") -%}
+  <script src="{{ url_for("static", filename="vendors/requirejs/require.js") }}"></script>
+  <script src="{{ url_for("static", filename="config.js") }}"></script>
+{%- else -%}
+  <script src="{{ url_for("static", filename="vendors/almond/almond.js") }}"></script>
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+{%- endif -%}
+{%- assets "app.js" -%}
+  <script src="{{ ASSET_URL }}"></script>
+{%- endassets -%}
+   <script>
+      window.props = {{ props|tojson }};
+   </script>
+</body>
+</html>
